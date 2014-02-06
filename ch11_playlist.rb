@@ -3,13 +3,11 @@
 
 # Dir.chdir '/Users/tyler/Music/iTunes/iTunes Media/Music'
 
-music = Dir.entries("C://Users/tyler/Music/iTunes/**/*.m4a")
+music = shuffle(Dir['**/*.m4a'])
 
-music(20,random:rng)
-
-
-
-puts music[0]
-puts music[1]
-puts music[2]
-puts music[3]
+File.open 'playlist.txt', 'w' do |f|
+  music.first(10).each do |m|
+    f.write m4a+"\n"
+  end
+end
+puts 'Finished!'
